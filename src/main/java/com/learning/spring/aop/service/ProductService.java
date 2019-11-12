@@ -6,16 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService {
+public class ProductService implements IProductService{
     @Autowired
     AuthService authService;
 
+    @Override
     public void insert(Product product){
         authService.checkAccess();
         System.out.println("insert product: " + product.getName());
     }
+
+    @Override
     public void delete(long id){
-        authService.checkAccess();
         System.out.println("delete product: " + id);
     }
 
